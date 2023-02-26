@@ -6,7 +6,7 @@ class Node:
         self.next = nxt
 
 
-def nth_to_last(head: Node, k: int, size = 0) -> Node:
+def nth_to_last(head: Node, k: int) -> Node:
     #Etapa 1: iterar pela lista ligada inteira para descobrir seu tamanho.
     current = head
     length = 0
