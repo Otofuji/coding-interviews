@@ -103,16 +103,25 @@ def all_strictly_increasing_sequences(k: int, n: int, **kwargs) -> list[list[int
     return sequences
 
 def create_pattern(n: int) -> list[int]:
+    # pattern = []
+    # if n > 0:
+    #     pattern.append(n)
+    #     create_pattern(n - 5)
+    #     pattern.append(n)
+    # else:
+    #     pattern.append(n)
+        
+    # return pattern
+
     pattern = []
-    if n < 1:
+    if n <= 0:
         pattern.append(n)
-    create_pattern(n - 5)
-    if n > 0:
-        pattern.append(n)
-    return pattern
-
-
-
+        return pattern
+    pattern.append(n)
+    var = create_pattern(n-5)
+    print(var)
+    pattern = pattern + var
+    return pattern+[n]
 
 
 def find_middle(head: LinkedListNode) -> LinkedListNode:
@@ -124,11 +133,13 @@ def find_middle_rec(head: LinkedListNode, n: int=0) -> tuple[int, LinkedListNode
     # Hint: n will be used to count nodes from left to right and
     # the number returned by the function will be used to count the nodes from right to left
     # TODO: Implement this function
-    slow = head
-    fast = head
-    count = 0
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        count += 1
-    return count, slow
+    if head is None:
+        return (n, None)
+    elif head.next is None:
+        return (n+1, head)
+    else:
+        mid, node = find_middle_rec(head.next, n+2)
+        if mid == n+2:
+            return (n+1, head)
+        else:
+            return (mid, node)
