@@ -1,4 +1,4 @@
-# Final Interview | Eric Fernando Otofuji Abrantes
+# Final Interview
 
 ## Approach to Vague Problem
 
